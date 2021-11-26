@@ -7,10 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import step.ResultStep;
+import step.VerificationStep;
 
 public class Settings {
     private static WebDriver driver;
     protected ResultStep step;
+
 
 
     public static WebDriver getDriver() {
@@ -27,11 +29,12 @@ public class Settings {
         step = new ResultStep();
 
 
+
     }
 
     @AfterMethod
     public void stop() {
-        // driver.quit();
+         driver.quit();
 
     }
 }

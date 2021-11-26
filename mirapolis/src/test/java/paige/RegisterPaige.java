@@ -12,7 +12,7 @@ public class RegisterPaige extends BasePaige {
     private WebElement user;
     @FindBy(name = "password")
     private WebElement password;
-    @FindBy(className = "avatar-full-name")
+    @FindBy( className = "avatar-full-name")
     protected WebElement name;
 
 
