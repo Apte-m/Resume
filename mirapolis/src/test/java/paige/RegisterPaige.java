@@ -5,16 +5,16 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 
 
 public class RegisterPaige extends BasePaige {
     @FindBy(name = "user")
-    WebElement user;
+    private WebElement user;
     @FindBy(name = "password")
-    WebElement password;
+    private WebElement password;
     @FindBy(className = "avatar-full-name")
-    WebElement name;
+    protected WebElement name;
+
 
 
     public RegisterPaige() {
@@ -34,8 +34,5 @@ public class RegisterPaige extends BasePaige {
         return this;
     }
 
-    public void verificationUser() {
 
-        Assert.assertEquals(name.getText(), "Фомина Елена Сергеевна");
-    }
 }

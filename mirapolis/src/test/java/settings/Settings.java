@@ -6,11 +6,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import paige.RegisterPaige;
+import step.ResultStep;
 
 public class Settings {
     private static WebDriver driver;
-    protected RegisterPaige registerPaige;
+    protected ResultStep step;
 
 
     public static WebDriver getDriver() {
@@ -24,14 +24,14 @@ public class Settings {
         WebDriverManager.chromedriver().setup();
         driver = DriverFactory.getWebDriver(Browsers.CHROME);
         driver.manage().window().maximize();
-        registerPaige = new RegisterPaige();
+        step = new ResultStep();
 
 
     }
 
     @AfterMethod
     public void stop() {
-           driver.quit();
+        // driver.quit();
 
     }
 }

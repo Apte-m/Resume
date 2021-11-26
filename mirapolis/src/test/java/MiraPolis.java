@@ -1,12 +1,15 @@
+import jdk.jfr.Description;
 import org.testng.annotations.Test;
 import settings.Settings;
 
 public class MiraPolis extends Settings {
 
+
+    @Description("Проверка конрректного пользователя")
     @Test
     public void runTask() {
-        registerPaige.goTo().
-                inputData()
-                .verificationUser();
+        step.stepInputPaigeAndVerificationUser()
+                .verificationPaige();
+
     }
 }
