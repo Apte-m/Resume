@@ -1,7 +1,6 @@
 import jdk.jfr.Description;
 import org.testng.annotations.Test;
 import settings.Settings;
-import step.VerificationStep;
 
 public class MiraPolis extends Settings {
 
@@ -13,10 +12,9 @@ public class MiraPolis extends Settings {
                 .verificationPaige();
 
     }
-
+    @Description("Проверка кода ответа ссылки")
     @Test
     public void checkUrl() {
-        VerificationStep verificationStep = new VerificationStep();
         verificationStep.verificationUrl();
 
     }

@@ -9,9 +9,11 @@ import org.testng.annotations.BeforeMethod;
 import step.ResultStep;
 import step.VerificationStep;
 
+
 public class Settings {
     private static WebDriver driver;
     protected ResultStep step;
+    protected VerificationStep verificationStep ;
 
 
 
@@ -27,6 +29,7 @@ public class Settings {
         driver = DriverFactory.getWebDriver(Browsers.CHROME);
         driver.manage().window().maximize();
         step = new ResultStep();
+        verificationStep = new VerificationStep();
 
 
 

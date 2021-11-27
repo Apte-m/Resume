@@ -11,11 +11,14 @@ public class VerificationStep extends RegisterPaige {
 
     public void verificationPaige() {
         String user = name.getText();
-        Assert.assertEquals( user,"Фомина Елена Сергеевна");
+        Assert.assertEquals(user, "Фомина Елена Сергеевна");
     }
 
     public void verificationUrl() {
-        softly.assertThat(resultStep.correctUrl()).as("paige incorrect").isEqualTo(302);
+        softly.assertThat(resultStep.correctUrl())
+                .asString()
+                .contains("302")
+                .contains("200");
 
 
     }

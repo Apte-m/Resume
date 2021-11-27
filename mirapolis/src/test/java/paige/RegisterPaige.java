@@ -27,9 +27,9 @@ public class RegisterPaige extends BasePaige {
         return this;
     }
 
-    public RegisterPaige inputData() {
-        user.sendKeys("fominaelena");
-        password.sendKeys("1P73BP4Z" + Keys.RETURN);
+    public RegisterPaige inputData(String login,String pswd) {
+        user.sendKeys(login);
+        password.sendKeys(pswd + Keys.RETURN);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Мои сертификаты')]")));
         return this;
     }

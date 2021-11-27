@@ -43,7 +43,7 @@ public class ResultStep {
 
     public VerificationStep stepInputPaigeAndVerificationUser() {
         registerPaige.goTo()
-                .inputData();
+                .inputData("fominaelena","1P73BP4Z");
         return new VerificationStep();
     }
 }
