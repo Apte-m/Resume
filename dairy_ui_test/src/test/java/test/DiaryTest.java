@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import readproperty.ReadConfig;
 import settings.Utils;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DiaryTest extends Utils {
@@ -21,28 +22,6 @@ public class DiaryTest extends Utils {
                         .inputLoginAndPassword(ReadConfig.LOGIN, ReadConfig.PASSWORD)
                         .isLoginChecked());
 
-    }
-
-    @DisplayName("Проверка добавления лайка пользователю Diary Spirit")
-    @Test
-    void checkLike() {
-        new BookPaige()
-                .goTo()
-                .goToNewsAndClickLikeFirstLabel()
-                .simpleReturnClick()
-                .assertCountLikeAndUserName();
-    }
-
-
-    @AfterEach
-    void tearDown() {
-        BookPaige bookPaige = new BookPaige();
-        bookPaige
-                .goTo()
-                .goToNewsAndClickLikeFirstLabel();
-        if (bookPaige.getDisplayed()) {
-            bookPaige.simpleReturnClick();
-        }
     }
 
 
