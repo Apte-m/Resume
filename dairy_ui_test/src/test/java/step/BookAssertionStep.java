@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookAssertionStep {
 
-    public synchronized BookPaige assertCountLikeAndUserName() {
+    public  BookPaige assertCountLikeAndUserName() {
         BookPaige bookPaige = new BookPaige();
         int expect = Integer.parseInt(bookPaige.getCountLike()) + 1;
         assertAll(() -> assertEquals(expect,
