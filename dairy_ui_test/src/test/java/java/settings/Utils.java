@@ -1,35 +1,36 @@
-package utils;
+package java.settings;
 
 import facktory.Browsers;
 import facktory.DriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import paige.MethodPaige;
 
-public class Settings {
+public class Utils {
+
     private static WebDriver driver;
-    protected static MethodPaige paige;
+
 
     public static WebDriver getDriver() {
         return driver;
     }
 
-    @BeforeMethod
-    public void start() {
 
-
+    @BeforeAll
+    public static void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = DriverFactory.getWebDriver(Browsers.CHROME);
         driver.manage().window().maximize();
-        paige = new MethodPaige();
+
 
     }
 
-    @AfterMethod
-    public void stop() {
+
+    @AfterAll
+    public static void rearDown() {
         driver.quit();
+
 
     }
 }
