@@ -1,16 +1,14 @@
 package test;
 
-import base.BookPaige;
 import base.DiaryPaige;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import readproperty.ReadConfig;
-import settings.Utils;
+import settings.UtilsTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-public class DiaryTest extends Utils {
+import static org.junit.jupiter.api.Assertions.assertTrue;
+@DisplayName("Проверка входа")
+public class LoginTest extends UtilsTest {
 
 
     @DisplayName("Проверка сооствестивие логина")
