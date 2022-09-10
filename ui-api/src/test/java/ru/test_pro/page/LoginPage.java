@@ -1,14 +1,9 @@
 package ru.test_pro.page;
 
-import com.sun.istack.NotNull;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 
 @Service
 public class LoginPage implements Page {
@@ -19,16 +14,22 @@ public class LoginPage implements Page {
         HashMap<String, By> seleniumElement = new HashMap<>();
         seleniumElement.put("email", By.xpath("//input[@name='email']"));
         seleniumElement.put("password", By.xpath("//input[@name='password']"));
+        seleniumElement.put("come in", By.xpath("//*[@name='go']"));
+
         return seleniumElement.get(element);
     }
 
     @Override
-    public List<WebElement> getElementsList(String element) {
-        return null;
+    public By getElementsCollection(String element) {
+        HashMap<String, By> seleniumElement = new HashMap<>();
+        seleniumElement.put("коллекции", By.xpath("//*[@class='form__field-label']"));
+
+        return seleniumElement.get(element);
     }
 
+
     @Override
-    public String getElementsString(String element) {
-        return null;
+    public By getElementsContainsText(String element) {
+        return By.xpath("//*[@class='" + element + "']");
     }
 }
