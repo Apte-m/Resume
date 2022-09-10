@@ -3,6 +3,8 @@ package ru.test_pro.api;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -14,8 +16,8 @@ public class Specification {
                 .setRelaxedHTTPSValidation()
                 .setBaseUri("https://jsonplaceholder.typicode.com/posts")
                 .setContentType(ContentType.JSON)
-//             .addFilter(new ResponseLoggingFilter())
-//              .addFilter(new RequestLoggingFilter())
+                .addFilter(new ResponseLoggingFilter())
+//                .addFilter(new RequestLoggingFilter())
                 .build();
     }
 

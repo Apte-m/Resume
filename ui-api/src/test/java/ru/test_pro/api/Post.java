@@ -1,17 +1,19 @@
 package ru.test_pro.api;
 
 import io.restassured.response.Response;
+import org.springframework.stereotype.Service;
 
 import static io.restassured.RestAssured.given;
 
+@Service
 public class Post implements CrudEntity {
     @Override
     public Response getId(String... values) {
-        Specification.installSpecification(Specification.requestSpec(), Specification.responseSpec(Integer.parseInt(values[1])));
+        Specification.installSpecification(Specification.requestSpec(), Specification.responseSpec(Integer.parseInt(values[0])));
 
         return given()
                 .when()
-                .get("/{id}", values[0]);
+                .get();
     }
 
     @Override

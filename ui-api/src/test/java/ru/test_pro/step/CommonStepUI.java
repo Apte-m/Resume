@@ -3,15 +3,11 @@ package ru.test_pro.step;
 import cucumber.api.java.ru.Дано;
 import cucumber.api.java.ru.Затем;
 import cucumber.api.java.ru.И;
-import io.cucumber.datatable.DataTable;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.test_pro.service.PageMap;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -21,7 +17,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertEquals;
 
 @Slf4j
-public class CommonStep {
+public class CommonStepUI {
 
     @Autowired
     private PageMap pageMap;
@@ -71,6 +67,9 @@ public class CommonStep {
         assertThat(elements.stream().map(WebElement::getText).collect(Collectors.toList())
                 ,hasItems(map.get("Почта"),map.get("Пароль"),map.get("Другое")));
     }
+
+
+
 }
 
 

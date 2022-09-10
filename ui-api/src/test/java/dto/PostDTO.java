@@ -12,8 +12,6 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PostDTO {
 
-	@JsonProperty("id")
-	private int id;
 
 	@JsonProperty("title")
 	private String title;
@@ -22,7 +20,7 @@ public class PostDTO {
 	private String body;
 
 	@JsonProperty("userId")
-	private int userId;
+	private String userId;
 
 
 }

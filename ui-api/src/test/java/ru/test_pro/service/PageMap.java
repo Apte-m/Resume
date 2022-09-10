@@ -12,7 +12,7 @@ import ru.test_pro.page.Page;
 public class PageMap {
 
     @NotNull
-    LoginPage loginPage;
+    private LoginPage loginPage;
 
 
     public Page getSelectedPage(String page) throws NoSuchElementException {
