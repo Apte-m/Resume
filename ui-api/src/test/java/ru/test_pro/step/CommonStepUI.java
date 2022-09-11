@@ -4,6 +4,7 @@ import cucumber.api.java.ru.Дано;
 import cucumber.api.java.ru.Затем;
 import cucumber.api.java.ru.И;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.test_pro.service.PageMap;
@@ -22,44 +23,38 @@ public class CommonStepUI {
     @Autowired
     private PageMap pageMap;
     @Autowired
-    private Hooks hooks;
+    WebDriver webDriver;
 
-    private WebElement webElement;
+
 
 
     @Дано("переходим на {string} и вводим для эедемента {string} значение в поле {string}")
     public void goToAndInputText(String page, String element, String text) {
-        webElement = hooks.webDriver
-                .findElement(pageMap.getSelectedPage(page)
-                        .getElements(element));
-
-
-        webElement.sendKeys(text);
+        webDriver.findElement(pageMap.getSelectedPage(page)
+                        .getElements(element)).sendKeys(text);
 
 
     }
 
     @Затем("на {string} нажать {string}")
     public void click(String page, String element) {
-        webElement = hooks.webDriver
-                .findElement(pageMap.getSelectedPage(page)
-                        .getElements(element));
+         webDriver.findElement(pageMap.getSelectedPage(page)
+                        .getElements(element))
+                 .click();
 
-        webElement.click();
+
 
     }
 
     @И("проверяем, что url соотвествует {string}")
     public void checkToPageAndUrl(String url) {
-        assertEquals(hooks.webDriver
-                .getCurrentUrl(), url);
+        assertEquals(webDriver.getCurrentUrl(), url);
     }
 
 
     @Затем("на {string}  провереям наличие текста  {string} и он равен ожидаемому {string}")
     public void checkText(String page, String expected, String actual) {
-        assertEquals(hooks.webDriver
-                        .findElement(pageMap.getSelectedPage(page)
+        assertEquals(webDriver.findElement(pageMap.getSelectedPage(page)
                                 .getElementsContainsText(expected))
                         .getText(), actual);
     }
@@ -67,8 +62,7 @@ public class CommonStepUI {
 
     @Затем("на {string}  провереям наличие  {string}")
     public void checkToCollection(String page, String element, Map<String, String> map) {
-        List<WebElement> elements = hooks.webDriver
-                .findElements(pageMap.getSelectedPage(page)
+        List<WebElement> elements = webDriver.findElements(pageMap.getSelectedPage(page)
                         .getElementsCollection(element));
 
 
