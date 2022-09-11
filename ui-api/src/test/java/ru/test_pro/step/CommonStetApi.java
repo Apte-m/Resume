@@ -20,34 +20,44 @@ public class CommonStetApi {
     private ApiMap apiMap;
 
 
-    @Дано("ендпоинт {string} получаем и проверяем и {string}")
+    @Дано("эндпоинт {string} получаем и проверяем и {string}")
     public void getPost(String endpoint, String code, Map<String, String> map) {
-        PostDTO[] postDTOS = apiMap.getCrud(endpoint).getId(code).as(PostDTO[].class);
+        PostDTO[] postDTOS = apiMap.getCrud(endpoint)
+                .getId(code)
+                .as(PostDTO[].class);
 
-        assertThat(Arrays.stream(postDTOS).map(PostDTO::getTitle).collect(Collectors.toList()), hasItem(map.get("title")));
-        assertThat(Arrays.stream(postDTOS).map(PostDTO::getBody).collect(Collectors.toList()), hasItem(map.get("body")));
+        assertThat(Arrays.stream(postDTOS)
+                .map(PostDTO::getTitle)
+                .collect(Collectors.toList()), hasItem(map.get("title")));
+
+        assertThat(Arrays.stream(postDTOS)
+                .map(PostDTO::getBody)
+                .collect(Collectors.toList()), hasItem(map.get("body")));
     }
 
-    @Дано("ендпоинт {string} и создаем запись и {string}")
+    @Дано("эндпоинт {string} и создаем запись и {string}")
     public void createPost(String endpoint,String code, Map<String, String> map) {
         PostDTO postDTO = new PostDTO(map.get("title")
                 , map.get("body")
                 , map.get("userId"));
 
-        apiMap.getCrud(endpoint).create(postDTO,code);
+        apiMap.getCrud(endpoint)
+                .create(postDTO,code);
     }
 
-    @Дано("ендпоинт {string} и редактируем запись и {string}")
+    @Дано("эндпоинт {string} и редактируем запись и {string}")
     public void EditePost(String endpoint, String code,Map <String,String> map) {
         PostDTO postDTO = new PostDTO(map.get("title")
                 , map.get("body")
                 , map.get("userId"));
 
-        apiMap.getCrud(endpoint).update(postDTO,code);
+        apiMap.getCrud(endpoint)
+                .update(postDTO,code);
     }
 
-    @Затем("на едпоинте {string} удалем запись {string} и код {string}")
+    @Затем("на эдпоинте {string} удалем запись {string} и код {string}")
     public void deletePost(String endpoint, String number, String code) {
-        apiMap.getCrud(endpoint).delete(number,code);
+        apiMap.getCrud(endpoint)
+                .delete(number,code);
     }
 }

@@ -29,7 +29,10 @@ public class CommonStepUI {
 
     @Дано("переходим на {string} и вводим для эедемента {string} значение в поле {string}")
     public void goToAndInputText(String page, String element, String text) {
-        webElement = hooks.webDriver.findElement(pageMap.getSelectedPage(page).getElements(element));
+        webElement = hooks.webDriver
+                .findElement(pageMap.getSelectedPage(page)
+                        .getElements(element));
+
 
         webElement.sendKeys(text);
 
@@ -38,36 +41,42 @@ public class CommonStepUI {
 
     @Затем("на {string} нажать {string}")
     public void click(String page, String element) {
-        webElement = hooks.webDriver.findElement(pageMap.getSelectedPage(page).getElements(element));
+        webElement = hooks.webDriver
+                .findElement(pageMap.getSelectedPage(page)
+                        .getElements(element));
+
         webElement.click();
 
     }
 
     @И("проверяем, что url соотвествует {string}")
     public void checkToPageAndUrl(String url) {
-
-        assertEquals(hooks
-                .webDriver
+        assertEquals(hooks.webDriver
                 .getCurrentUrl(), url);
     }
 
 
     @Затем("на {string}  провереям наличие текста  {string} и он равен ожидаемому {string}")
     public void checkText(String page, String expected, String actual) {
-        assertEquals(hooks.webDriver.findElement(pageMap.getSelectedPage(page).getElementsContainsText(expected)).getText()
-                , actual);
+        assertEquals(hooks.webDriver
+                        .findElement(pageMap.getSelectedPage(page)
+                                .getElementsContainsText(expected))
+                        .getText(), actual);
     }
 
 
     @Затем("на {string}  провереям наличие  {string}")
-    public void checkToCollection(String page,  String element, Map<String,String> map) {
-        List<WebElement> elements = hooks.webDriver.findElements(pageMap.getSelectedPage(page).getElementsCollection(element));
+    public void checkToCollection(String page, String element, Map<String, String> map) {
+        List<WebElement> elements = hooks.webDriver
+                .findElements(pageMap.getSelectedPage(page)
+                        .getElementsCollection(element));
 
 
-        assertThat(elements.stream().map(WebElement::getText).collect(Collectors.toList())
-                ,hasItems(map.get("Почта"),map.get("Пароль"),map.get("Другое")));
+        assertThat(elements.stream()
+                        .map(WebElement::getText)
+                        .collect(Collectors.toList())
+                , hasItems(map.get("Почта"), map.get("Пароль"), map.get("Другое")));
     }
-
 
 
 }
