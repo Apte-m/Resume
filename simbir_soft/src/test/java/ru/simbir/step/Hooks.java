@@ -1,4 +1,4 @@
-package ru.test_pro.step;
+package ru.simbir.step;
 
 
 import com.sun.istack.NotNull;
@@ -15,14 +15,14 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import ru.test_pro.config.LocalChromeWebdriverBeanConfig;
-import ru.test_pro.config.LocalFirefoxlWebdriverBeanConfig;
-import ru.test_pro.config.PropertiesConfig;
-import ru.test_pro.config.RemoteWebdriverBeanConfig;
+import ru.simbir.config.LocalChromeWebdriverBeanConfig;
+import ru.simbir.config.LocalFireFoxWebdriverBeanConfig;
+import ru.simbir.config.PropertiesConfig;
+import ru.simbir.config.RemoteWebdriverBeanConfig;
 
 @AllArgsConstructor
 @ContextConfiguration(classes = {
-        LocalChromeWebdriverBeanConfig.class, LocalFirefoxlWebdriverBeanConfig.class,
+        LocalChromeWebdriverBeanConfig.class, LocalFireFoxWebdriverBeanConfig.class,
         RemoteWebdriverBeanConfig.class})
 public class Hooks implements TestWatcher {
 
@@ -32,11 +32,13 @@ public class Hooks implements TestWatcher {
     @Autowired
     PropertiesConfig config;
 
+
     @Before
     @Step("start browser session")
     public void before() {
         webDriver.manage().window().maximize();
         webDriver.get(config.getWeb().getBaseurl());
+
     }
 
     @After(value = "@tearDown")
