@@ -8,18 +8,24 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-
+import ru.simbir.config.PropertiesConfig;
+@Configuration
+@Profile("vat")
 public class Specification {
 
-
+    @Autowired
+    PropertiesConfig config;
 
     @Bean
     public RequestSpecification requestSpec() {
         return new RequestSpecBuilder()
                 .setRelaxedHTTPSValidation()
-                .addHeader("Authorization", "OAuth y0_AgAAAABlo8lZAADLWwAAAADSbf7ETsKUXaugRMmXgECuOQEw-TNpTjA")
+                .addHeader("Authorization", "OAuth " + config.getVariable().getToken())
                 .setBaseUri("https://cloud-api.yandex.net")
                 .setContentType(ContentType.JSON)
 //                .addFilter(new ResponseLoggingFilter())
